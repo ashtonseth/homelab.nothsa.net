@@ -1,0 +1,2414 @@
+{
+  "schemaVersion": 1,
+  "id": "lab-topology",
+  "title": "Lab topology",
+  "source": {
+    "kind": "User-provided topology screenshot",
+    "image": "source-diagram.png",
+    "sha256": "eaa9276a16df801e77abb6e1264ef5e1cfaf21050e3aa5d623bda1a47a445deb"
+  },
+  "presentation": {
+    "categoryId": "lab-topology",
+    "categoryLabel": "Lab topology",
+    "width": 1430,
+    "height": 1320,
+    "defaultScenarioId": "comcast-internet",
+    "showSubnetBlocks": false,
+    "showAddresses": false,
+    "oneClientPerType": true,
+    "defaultWiredSpeed": "1G"
+  },
+  "nodes": [
+    {
+      "id": "internet",
+      "type": "internet",
+      "label": "Internet",
+      "subtitle": "WWW",
+      "position": {
+        "x": 675,
+        "y": 82
+      }
+    },
+    {
+      "id": "starlink",
+      "type": "provider",
+      "label": "SpaceX / Starlink",
+      "subtitle": "Satellite access",
+      "position": {
+        "x": 335,
+        "y": 207
+      },
+      "symbol": "dish"
+    },
+    {
+      "id": "comcast",
+      "type": "provider",
+      "label": "Comcast / Xfinity",
+      "subtitle": "Cable access",
+      "position": {
+        "x": 912,
+        "y": 207
+      },
+      "symbol": "modem"
+    },
+    {
+      "id": "public-transit",
+      "type": "internet",
+      "label": "Public transit",
+      "subtitle": "GRE underlay",
+      "position": {
+        "x": 1100,
+        "y": 207
+      },
+      "symbol": "transit"
+    },
+    {
+      "id": "route64",
+      "type": "vpn",
+      "label": "ROUTE64",
+      "subtitle": "AS18710 upstream",
+      "position": {
+        "x": 1290,
+        "y": 207
+      },
+      "symbol": "peer"
+    },
+    {
+      "id": "edge-starlink",
+      "type": "router",
+      "label": "EDGE-RTR-02",
+      "subtitle": "C8235-G2 · Cloud Managed Device mode",
+      "position": {
+        "x": 335,
+        "y": 337
+      }
+    },
+    {
+      "id": "edge-comcast",
+      "type": "router",
+      "label": "EDGE-RTR-01",
+      "subtitle": "C8235-G2 · Cloud Managed Device mode",
+      "position": {
+        "x": 912,
+        "y": 337
+      }
+    },
+    {
+      "id": "wan-cw9171",
+      "type": "ap",
+      "label": "CW9171",
+      "subtitle": "Starlink-side AP",
+      "position": {
+        "x": 105,
+        "y": 337
+      }
+    },
+    {
+      "id": "wan-cw9174",
+      "type": "ap",
+      "label": "CW9174",
+      "subtitle": "Comcast-side AP",
+      "position": {
+        "x": 1130,
+        "y": 337
+      }
+    },
+    {
+      "id": "wan-cw9172",
+      "type": "ap",
+      "label": "CW9172",
+      "subtitle": "Comcast-side AP",
+      "position": {
+        "x": 1315,
+        "y": 440
+      }
+    },
+    {
+      "id": "wan-switch",
+      "type": "switch",
+      "label": "MS130-12P",
+      "subtitle": "WAN distribution switch",
+      "position": {
+        "x": 630,
+        "y": 459
+      }
+    },
+    {
+      "id": "cellular",
+      "type": "provider",
+      "label": "MG52",
+      "subtitle": "AT&T backup",
+      "position": {
+        "x": 838,
+        "y": 503
+      },
+      "symbol": "tower"
+    },
+    {
+      "id": "wan-router",
+      "type": "router",
+      "label": "C8121-G2-MX",
+      "subtitle": "HA WAN router · 3 circuits",
+      "position": {
+        "x": 630,
+        "y": 596
+      }
+    },
+    {
+      "id": "camera-router",
+      "type": "router",
+      "label": "C8121-CW-G2-MX",
+      "subtitle": "Camera router",
+      "position": {
+        "x": 185,
+        "y": 596
+      }
+    },
+    {
+      "id": "camera-mv23m",
+      "type": "iot",
+      "label": "MV23M",
+      "subtitle": "Camera",
+      "position": {
+        "x": 105,
+        "y": 740
+      },
+      "clientType": "mv23m-camera",
+      "symbol": "camera"
+    },
+    {
+      "id": "camera-mv21",
+      "type": "iot",
+      "label": "MV21",
+      "subtitle": "Camera",
+      "position": {
+        "x": 280,
+        "y": 740
+      },
+      "clientType": "mv21-camera",
+      "symbol": "camera"
+    },
+    {
+      "id": "teleworker-edge",
+      "type": "router",
+      "label": "C8131-G2",
+      "subtitle": "Cloud Managed · Cloud mode",
+      "position": {
+        "x": 1020,
+        "y": 596
+      }
+    },
+    {
+      "id": "teleworker-mx",
+      "type": "firewall",
+      "label": "MX75",
+      "subtitle": "Teleworker bundle",
+      "position": {
+        "x": 1285,
+        "y": 648
+      },
+      "symbol": "gateway"
+    },
+    {
+      "id": "webex-desk",
+      "type": "client",
+      "label": "Webex Desk",
+      "subtitle": "Teleworker bundle",
+      "position": {
+        "x": 1285,
+        "y": 790
+      },
+      "clientType": "collaboration",
+      "symbol": "display"
+    },
+    {
+      "id": "unifi-iot-ap",
+      "type": "ap",
+      "label": "UniFi AP",
+      "subtitle": "Wi‑Fi 4",
+      "position": {
+        "x": 450,
+        "y": 770
+      },
+      "symbol": "unifi-ap"
+    },
+    {
+      "id": "gateway-fiber",
+      "type": "router",
+      "label": "UniFi Gateway Fiber",
+      "subtitle": "LAN gateway",
+      "position": {
+        "x": 630,
+        "y": 754
+      },
+      "symbol": "gateway"
+    },
+    {
+      "id": "lan-switch",
+      "type": "switch",
+      "label": "USW Pro Max 16",
+      "subtitle": "LAN switch",
+      "position": {
+        "x": 630,
+        "y": 898
+      }
+    },
+    {
+      "id": "nas",
+      "type": "server",
+      "label": "UNAS Pro-8",
+      "subtitle": "NAS",
+      "position": {
+        "x": 370,
+        "y": 898
+      },
+      "symbol": "nas"
+    },
+    {
+      "id": "z4c",
+      "type": "firewall",
+      "label": "Z4C",
+      "subtitle": "Wired IoT gateway",
+      "position": {
+        "x": 105,
+        "y": 1077
+      },
+      "symbol": "gateway"
+    },
+    {
+      "id": "gateway-max",
+      "type": "router",
+      "label": "UniFi Gateway Max",
+      "subtitle": "Test device",
+      "position": {
+        "x": 293,
+        "y": 1077
+      },
+      "symbol": "gateway"
+    },
+    {
+      "id": "lan-cw9171",
+      "type": "ap",
+      "label": "CW9171",
+      "subtitle": "LAN access point",
+      "position": {
+        "x": 485,
+        "y": 1077
+      }
+    },
+    {
+      "id": "lan-cw9174",
+      "type": "ap",
+      "label": "CW9174",
+      "subtitle": "LAN access point",
+      "position": {
+        "x": 670,
+        "y": 1077
+      }
+    },
+    {
+      "id": "proxmox-dell-one",
+      "type": "server",
+      "label": "Dell OptiPlex i7 · 1",
+      "subtitle": "Proxmox · Dell 1",
+      "position": {
+        "x": 890,
+        "y": 1077
+      }
+    },
+    {
+      "id": "proxmox-dell-two",
+      "type": "server",
+      "label": "Dell OptiPlex i7 · 2",
+      "subtitle": "Proxmox · Dell 2",
+      "position": {
+        "x": 1085,
+        "y": 1077
+      }
+    },
+    {
+      "id": "proxmox-qotom",
+      "type": "server",
+      "label": "Qotom i5",
+      "subtitle": "Proxmox node",
+      "position": {
+        "x": 1280,
+        "y": 1077
+      },
+      "symbol": "mini-server"
+    },
+    {
+      "id": "wired-iot",
+      "type": "iot",
+      "label": "Wired IoT",
+      "subtitle": "Representative device",
+      "position": {
+        "x": 105,
+        "y": 1230
+      },
+      "clientType": "wired-iot"
+    },
+    {
+      "id": "wifi-iot",
+      "type": "iot",
+      "label": "Wireless IoT",
+      "subtitle": "Wi‑Fi 4 · bulbs, outlets, doorbells, cameras",
+      "position": {
+        "x": 485,
+        "y": 1230
+      },
+      "clientType": "wifi-iot",
+      "symbol": "wireless-iot"
+    },
+    {
+      "id": "wifi-client",
+      "type": "client",
+      "label": "Wireless client",
+      "subtitle": "Wi‑Fi 7 · phone or laptop",
+      "position": {
+        "x": 670,
+        "y": 1230
+      },
+      "clientType": "wifi-client",
+      "symbol": "wireless-client"
+    }
+  ],
+  "links": [
+    {
+      "id": "starlink-internet",
+      "fromNode": "starlink",
+      "toNode": "internet",
+      "kind": "internet",
+      "bidirectional": true,
+      "via": [
+        [
+          335,
+          82
+        ]
+      ]
+    },
+    {
+      "id": "comcast-internet",
+      "fromNode": "comcast",
+      "toNode": "internet",
+      "kind": "internet",
+      "bidirectional": true,
+      "via": [
+        [
+          912,
+          82
+        ]
+      ]
+    },
+    {
+      "id": "comcast-public-transit",
+      "fromNode": "comcast",
+      "toNode": "public-transit",
+      "kind": "internet-transit",
+      "bidirectional": true,
+      "note": "Abstract public transport for GRE after the Comcast access circuit."
+    },
+    {
+      "id": "public-transit-route64",
+      "fromNode": "public-transit",
+      "toNode": "route64",
+      "kind": "internet-transit",
+      "bidirectional": true,
+      "note": "GRE underlay reachability to the ROUTE64 peer. Intermediate devices are unspecified."
+    },
+    {
+      "id": "route64-internet",
+      "fromNode": "route64",
+      "toNode": "internet",
+      "kind": "internet",
+      "bidirectional": true,
+      "via": [
+        [
+          1290,
+          29
+        ],
+        [
+          675,
+          29
+        ]
+      ],
+      "note": "Illustrative Internet egress for the inner packet after GRE termination at ROUTE64."
+    },
+    {
+      "id": "comcast-route64-overlay",
+      "fromNode": "edge-comcast",
+      "toNode": "route64",
+      "kind": "overlay",
+      "bidirectional": true,
+      "via": [
+        [
+          1010,
+          337
+        ],
+        [
+          1010,
+          295
+        ],
+        [
+          1290,
+          295
+        ]
+      ],
+      "label": "GRE / BGP",
+      "note": "Logical GRE tunnel from EDGE-RTR-01 to ROUTE64 over Comcast. BGP is the peering control plane.",
+      "labelPosition": [
+        1210,
+        310
+      ]
+    },
+    {
+      "id": "edge-starlink-wan",
+      "fromNode": "edge-starlink",
+      "toNode": "starlink",
+      "kind": "physical",
+      "bidirectional": true,
+      "labelPosition": [
+        290,
+        295
+      ]
+    },
+    {
+      "id": "edge-comcast-wan",
+      "fromNode": "edge-comcast",
+      "toNode": "comcast",
+      "kind": "physical",
+      "bidirectional": true,
+      "labelPosition": [
+        870,
+        295
+      ]
+    },
+    {
+      "id": "wan-switch-edge-starlink",
+      "fromNode": "wan-switch",
+      "toNode": "edge-starlink",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          335,
+          459
+        ]
+      ],
+      "labelPosition": [
+        491,
+        444
+      ]
+    },
+    {
+      "id": "wan-switch-edge-comcast",
+      "fromNode": "wan-switch",
+      "toNode": "edge-comcast",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          912,
+          459
+        ]
+      ],
+      "labelPosition": [
+        765,
+        444
+      ]
+    },
+    {
+      "id": "wan-ap-starlink",
+      "fromNode": "wan-cw9171",
+      "toNode": "edge-starlink",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          105,
+          411
+        ],
+        [
+          335,
+          411
+        ]
+      ],
+      "note": "AP attachment to the shared EDGE-RTR-02 trace. Exact termination is unspecified.",
+      "speed": "2.5G"
+    },
+    {
+      "id": "wan-ap-comcast-9174",
+      "fromNode": "wan-cw9174",
+      "toNode": "edge-comcast",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          1130,
+          397
+        ],
+        [
+          912,
+          397
+        ]
+      ],
+      "note": "AP attachment to the shared EDGE-RTR-01 trace. Exact termination is unspecified.",
+      "speed": "2.5G"
+    },
+    {
+      "id": "wan-ap-comcast-9172",
+      "fromNode": "wan-cw9172",
+      "toNode": "edge-comcast",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          912,
+          440
+        ]
+      ],
+      "note": "AP attachment to the shared EDGE-RTR-01 trace. Exact termination is unspecified.",
+      "speed": "2.5G"
+    },
+    {
+      "id": "wan-router-switch",
+      "fromNode": "wan-router",
+      "toNode": "wan-switch",
+      "kind": "physical",
+      "bidirectional": true,
+      "labelPosition": [
+        656,
+        548
+      ]
+    },
+    {
+      "id": "wan-router-mg52",
+      "fromNode": "wan-router",
+      "toNode": "cellular",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          630,
+          510
+        ],
+        [
+          838,
+          510
+        ]
+      ],
+      "note": "MG52 tees off the drawn WAN router/distribution trunk. Its exact port and upstream transport are unspecified.",
+      "labelPosition": [
+        744,
+        500
+      ]
+    },
+    {
+      "id": "camera-router-wan-a",
+      "fromNode": "camera-router",
+      "toNode": "wan-router",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          238,
+          548
+        ],
+        [
+          510,
+          548
+        ],
+        [
+          550,
+          570
+        ]
+      ],
+      "note": "Path A represents one of the two drawn connections. Ports and forwarding preference are unspecified.",
+      "pathName": "Path A",
+      "labelPosition": [
+        375,
+        536
+      ]
+    },
+    {
+      "id": "camera-router-wan-b",
+      "fromNode": "camera-router",
+      "toNode": "wan-router",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          246,
+          626
+        ],
+        [
+          515,
+          626
+        ],
+        [
+          550,
+          620
+        ]
+      ],
+      "note": "Path B represents one of the two drawn connections. Ports and forwarding preference are unspecified.",
+      "pathName": "Path B",
+      "labelPosition": [
+        377,
+        645
+      ]
+    },
+    {
+      "id": "mv23m-camera-router",
+      "fromNode": "camera-mv23m",
+      "toNode": "camera-router",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          105,
+          669
+        ],
+        [
+          185,
+          669
+        ]
+      ],
+      "labelPosition": [
+        117,
+        695
+      ]
+    },
+    {
+      "id": "mv21-camera-router",
+      "fromNode": "camera-mv21",
+      "toNode": "camera-router",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          280,
+          669
+        ],
+        [
+          185,
+          669
+        ]
+      ]
+    },
+    {
+      "id": "teleworker-edge-wan-a",
+      "fromNode": "teleworker-edge",
+      "toNode": "wan-router",
+      "kind": "physical",
+      "bidirectional": true,
+      "note": "Path A represents one of the two drawn connections. Ports and forwarding preference are unspecified.",
+      "pathName": "Path A",
+      "via": [
+        [
+          974,
+          562
+        ],
+        [
+          756,
+          562
+        ],
+        [
+          711,
+          570
+        ]
+      ],
+      "labelPosition": [
+        923,
+        550
+      ]
+    },
+    {
+      "id": "teleworker-edge-wan-b",
+      "fromNode": "teleworker-edge",
+      "toNode": "wan-router",
+      "kind": "physical",
+      "bidirectional": true,
+      "note": "Path B represents one of the two drawn connections. Ports and forwarding preference are unspecified.",
+      "pathName": "Path B",
+      "via": [
+        [
+          960,
+          638
+        ],
+        [
+          756,
+          638
+        ],
+        [
+          711,
+          620
+        ]
+      ],
+      "labelPosition": [
+        855,
+        657
+      ]
+    },
+    {
+      "id": "mx75-teleworker-edge",
+      "fromNode": "teleworker-mx",
+      "toNode": "teleworker-edge",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          1168,
+          648
+        ],
+        [
+          1168,
+          596
+        ]
+      ]
+    },
+    {
+      "id": "webex-mx75",
+      "fromNode": "webex-desk",
+      "toNode": "teleworker-mx",
+      "kind": "physical",
+      "bidirectional": true,
+      "labelPosition": [
+        1303,
+        748
+      ]
+    },
+    {
+      "id": "gateway-fiber-wan",
+      "fromNode": "gateway-fiber",
+      "toNode": "wan-router",
+      "kind": "physical",
+      "bidirectional": true,
+      "labelPosition": [
+        650,
+        714
+      ]
+    },
+    {
+      "id": "unifi-ap-gateway",
+      "fromNode": "unifi-iot-ap",
+      "toNode": "gateway-fiber",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          525,
+          770
+        ],
+        [
+          525,
+          754
+        ]
+      ]
+    },
+    {
+      "id": "lan-switch-gateway",
+      "fromNode": "lan-switch",
+      "toNode": "gateway-fiber",
+      "kind": "physical",
+      "bidirectional": true,
+      "label": "SFP+",
+      "labelPosition": [
+        654,
+        846
+      ]
+    },
+    {
+      "id": "unas-lan-switch",
+      "fromNode": "nas",
+      "toNode": "lan-switch",
+      "kind": "physical",
+      "bidirectional": true,
+      "label": "SFP+"
+    },
+    {
+      "id": "z4c-lan",
+      "fromNode": "z4c",
+      "toNode": "lan-switch",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          105,
+          966
+        ],
+        [
+          630,
+          966
+        ]
+      ],
+      "labelPosition": [
+        410,
+        986
+      ]
+    },
+    {
+      "id": "wired-iot-z4c",
+      "fromNode": "wired-iot",
+      "toNode": "z4c",
+      "kind": "physical",
+      "bidirectional": true,
+      "labelPosition": [
+        129,
+        1179
+      ]
+    },
+    {
+      "id": "gateway-max-lan",
+      "fromNode": "gateway-max",
+      "toNode": "lan-switch",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          293,
+          966
+        ],
+        [
+          630,
+          966
+        ]
+      ]
+    },
+    {
+      "id": "lan-ap-9171",
+      "fromNode": "lan-cw9171",
+      "toNode": "lan-switch",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          485,
+          966
+        ],
+        [
+          630,
+          966
+        ]
+      ],
+      "labelPosition": [
+        531,
+        958
+      ],
+      "speed": "2.5G"
+    },
+    {
+      "id": "lan-ap-9174",
+      "fromNode": "lan-cw9174",
+      "toNode": "lan-switch",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          670,
+          966
+        ],
+        [
+          630,
+          966
+        ]
+      ],
+      "speed": "2.5G"
+    },
+    {
+      "id": "dell-one-lan",
+      "fromNode": "proxmox-dell-one",
+      "toNode": "lan-switch",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          890,
+          898
+        ]
+      ],
+      "labelPosition": [
+        909,
+        992
+      ]
+    },
+    {
+      "id": "dell-two-lan",
+      "fromNode": "proxmox-dell-two",
+      "toNode": "lan-switch",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          1085,
+          898
+        ]
+      ],
+      "labelPosition": [
+        1105,
+        992
+      ]
+    },
+    {
+      "id": "qotom-lan",
+      "fromNode": "proxmox-qotom",
+      "toNode": "lan-switch",
+      "kind": "physical",
+      "bidirectional": true,
+      "via": [
+        [
+          1280,
+          898
+        ]
+      ],
+      "labelPosition": [
+        1302,
+        992
+      ]
+    },
+    {
+      "id": "wifi-iot-ap",
+      "fromNode": "wifi-iot",
+      "toNode": "lan-cw9171",
+      "kind": "wireless",
+      "bidirectional": true,
+      "note": "Representative Wi‑Fi 4 association. Both WLAN labels meet the same AP fan-out in the drawing."
+    },
+    {
+      "id": "wifi-client-ap",
+      "fromNode": "wifi-client",
+      "toNode": "lan-cw9174",
+      "kind": "wireless",
+      "bidirectional": true,
+      "note": "Representative Wi‑Fi 7 association. Both WLAN labels meet the same AP fan-out in the drawing."
+    }
+  ],
+  "groups": [
+    {
+      "label": "Proxmox cluster",
+      "nodeIds": [
+        "proxmox-dell-one",
+        "proxmox-dell-two",
+        "proxmox-qotom"
+      ]
+    }
+  ],
+  "assumptions": [
+    "The device inventory and link layout are transcribed from the supplied diagram. The walkthroughs describe authored forwarding examples.",
+    "Device and link state, route preferences, exact port and VLAN assignments, NAT behavior and return routes require separate verification.",
+    "The WAN-side APs attach to the indicated edge branches. Their exact terminations and the MG52 branch’s exact port are unspecified.",
+    "The camera router and C8131-G2 each have two separately drawn paths to the HA WAN router. Their ports, link aggregation and actual forwarding preference are unspecified.",
+    "The LAN-side Wi‑Fi 4 and Wi‑Fi 7 roles share a drawn fan-out to both LAN APs. The representative pairings are documented as journey assumptions. The standalone UniFi IoT AP connects directly to Gateway Fiber.",
+    "Wired links without a speed or media label are shown as 1G by assumption. SFP+ is a source media label. Negotiated speeds remain unverified.",
+    "Public transit is an abstract GRE underlay waypoint. Internet is the destination after ROUTE64 decapsulates the packet.",
+    "The camera and teleworker examples pair local Path A with direct Comcast egress and local Path B with ROUTE64 egress over Comcast. This pairing is a walkthrough choice, while production policy remains unspecified."
+  ],
+  "scenarios": [
+    {
+      "id": "comcast-internet",
+      "title": "Wi‑Fi 7 to Internet via Comcast",
+      "description": "Trace a Wi‑Fi 7 client across the LAN, WAN distribution and EDGE-RTR-01.",
+      "sourceNodeId": "wifi-client",
+      "destinationNodeId": "internet",
+      "steps": [
+        {
+          "nodeId": "wifi-client",
+          "title": "Send over Wi‑Fi 7",
+          "detail": "A representative phone or laptop starts an outbound packet.",
+          "packetState": "Original client packet",
+          "services": [
+            "Wi‑Fi 7"
+          ]
+        },
+        {
+          "nodeId": "lan-cw9174",
+          "title": "Bridge onto Ethernet",
+          "detail": "CW9174 is the selected LAN access point for this example.",
+          "packetState": "Client packet on wired LAN",
+          "services": [
+            "2.5G uplink"
+          ]
+        },
+        {
+          "nodeId": "lan-switch",
+          "title": "Forward toward the LAN gateway",
+          "detail": "The USW Pro Max 16 forwards the frame to Gateway Fiber on the depicted SFP+ uplink.",
+          "packetState": "Client packet in a switched Ethernet frame",
+          "services": [
+            "SFP+"
+          ]
+        },
+        {
+          "nodeId": "gateway-fiber",
+          "title": "Route out of the LAN",
+          "detail": "Gateway Fiber sends this permitted example toward the HA WAN router.",
+          "packetState": "Packet routed toward the WAN",
+          "services": [
+            "LAN routing"
+          ]
+        },
+        {
+          "nodeId": "wan-router",
+          "title": "Select the scenario’s circuit",
+          "detail": "The HA WAN router hands this packet toward the circuit chosen for the walkthrough.",
+          "packetState": "Outbound packet on the authored WAN path",
+          "services": []
+        },
+        {
+          "nodeId": "wan-switch",
+          "title": "Cross WAN distribution",
+          "detail": "The MS130-12P switches the frame to the selected edge branch.",
+          "packetState": "Packet in a WAN-side Ethernet frame",
+          "services": []
+        },
+        {
+          "nodeId": "edge-comcast",
+          "title": "Use the Comcast edge",
+          "detail": "EDGE-RTR-01 forwards toward the shown Comcast access device.",
+          "packetState": "Outbound packet on the selected WAN",
+          "services": []
+        },
+        {
+          "nodeId": "comcast",
+          "title": "Traverse Comcast",
+          "detail": "The selected provider transports the example toward WWW.",
+          "packetState": "Provider transit",
+          "services": []
+        },
+        {
+          "nodeId": "internet",
+          "title": "Reach the Internet boundary",
+          "detail": "The drawing ends at WWW. The application service and reply are outside this walkthrough.",
+          "packetState": "Illustrative Internet delivery",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "wifi-client-ap",
+        "lan-ap-9174",
+        "lan-switch-gateway",
+        "gateway-fiber-wan",
+        "wan-router-switch",
+        "wan-switch-edge-comcast",
+        "edge-comcast-wan",
+        "comcast-internet"
+      ],
+      "assumptions": [
+        "The Wi‑Fi 7 endpoint is associated with LAN CW9174 for this walkthrough. The drawing leaves actual associations unspecified.",
+        "This example assumes a permitted forward route through Comcast. Route preference, NAT behavior and return path are unspecified."
+      ],
+      "outcome": "Illustrative Internet boundary reached."
+    },
+    {
+      "id": "starlink-internet",
+      "title": "Wi‑Fi 7 to Internet via Starlink",
+      "description": "Trace a Wi‑Fi 7 client across the LAN, WAN distribution and EDGE-RTR-02.",
+      "sourceNodeId": "wifi-client",
+      "destinationNodeId": "internet",
+      "steps": [
+        {
+          "nodeId": "wifi-client",
+          "title": "Send over Wi‑Fi 7",
+          "detail": "A representative phone or laptop starts an outbound packet.",
+          "packetState": "Original client packet",
+          "services": [
+            "Wi‑Fi 7"
+          ]
+        },
+        {
+          "nodeId": "lan-cw9174",
+          "title": "Bridge onto Ethernet",
+          "detail": "CW9174 is the selected LAN access point for this example.",
+          "packetState": "Client packet on wired LAN",
+          "services": [
+            "2.5G uplink"
+          ]
+        },
+        {
+          "nodeId": "lan-switch",
+          "title": "Forward toward the LAN gateway",
+          "detail": "The USW Pro Max 16 forwards the frame to Gateway Fiber on the depicted SFP+ uplink.",
+          "packetState": "Client packet in a switched Ethernet frame",
+          "services": [
+            "SFP+"
+          ]
+        },
+        {
+          "nodeId": "gateway-fiber",
+          "title": "Route out of the LAN",
+          "detail": "Gateway Fiber sends this permitted example toward the HA WAN router.",
+          "packetState": "Packet routed toward the WAN",
+          "services": [
+            "LAN routing"
+          ]
+        },
+        {
+          "nodeId": "wan-router",
+          "title": "Select the scenario’s circuit",
+          "detail": "The HA WAN router hands this packet toward the circuit chosen for the walkthrough.",
+          "packetState": "Outbound packet on the authored WAN path",
+          "services": []
+        },
+        {
+          "nodeId": "wan-switch",
+          "title": "Cross WAN distribution",
+          "detail": "The MS130-12P switches the frame to the selected edge branch.",
+          "packetState": "Packet in a WAN-side Ethernet frame",
+          "services": []
+        },
+        {
+          "nodeId": "edge-starlink",
+          "title": "Use the Starlink edge",
+          "detail": "EDGE-RTR-02 forwards toward the shown Starlink access device.",
+          "packetState": "Outbound packet on the selected WAN",
+          "services": []
+        },
+        {
+          "nodeId": "starlink",
+          "title": "Traverse Starlink",
+          "detail": "The selected provider transports the example toward WWW.",
+          "packetState": "Provider transit",
+          "services": []
+        },
+        {
+          "nodeId": "internet",
+          "title": "Reach the Internet boundary",
+          "detail": "The drawing ends at WWW. The application service and reply are outside this walkthrough.",
+          "packetState": "Illustrative Internet delivery",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "wifi-client-ap",
+        "lan-ap-9174",
+        "lan-switch-gateway",
+        "gateway-fiber-wan",
+        "wan-router-switch",
+        "wan-switch-edge-starlink",
+        "edge-starlink-wan",
+        "starlink-internet"
+      ],
+      "assumptions": [
+        "The Wi‑Fi 7 endpoint is associated with LAN CW9174 for this walkthrough. The drawing leaves actual associations unspecified.",
+        "This example assumes a permitted forward route through Starlink. Route preference, NAT behavior and return path are unspecified."
+      ],
+      "outcome": "Illustrative Internet boundary reached."
+    },
+    {
+      "id": "att-backup",
+      "title": "Wi‑Fi 7 to AT&T backup",
+      "description": "Follow the HA WAN router’s backup branch as far as the MG52 handoff.",
+      "sourceNodeId": "wifi-client",
+      "destinationNodeId": "cellular",
+      "steps": [
+        {
+          "nodeId": "wifi-client",
+          "title": "Send over Wi‑Fi 7",
+          "detail": "A representative phone or laptop starts an outbound packet.",
+          "packetState": "Original client packet",
+          "services": [
+            "Wi‑Fi 7"
+          ]
+        },
+        {
+          "nodeId": "lan-cw9174",
+          "title": "Bridge onto Ethernet",
+          "detail": "CW9174 is the selected LAN access point for this example.",
+          "packetState": "Client packet on wired LAN",
+          "services": [
+            "2.5G uplink"
+          ]
+        },
+        {
+          "nodeId": "lan-switch",
+          "title": "Forward toward the LAN gateway",
+          "detail": "The USW Pro Max 16 forwards the frame to Gateway Fiber on the depicted SFP+ uplink.",
+          "packetState": "Client packet in a switched Ethernet frame",
+          "services": [
+            "SFP+"
+          ]
+        },
+        {
+          "nodeId": "gateway-fiber",
+          "title": "Route out of the LAN",
+          "detail": "Gateway Fiber sends this permitted example toward the HA WAN router.",
+          "packetState": "Packet routed toward the WAN",
+          "services": [
+            "LAN routing"
+          ]
+        },
+        {
+          "nodeId": "wan-router",
+          "title": "Select the scenario’s circuit",
+          "detail": "The HA WAN router hands this packet toward the circuit chosen for the walkthrough.",
+          "packetState": "Outbound packet on the authored WAN path",
+          "services": []
+        },
+        {
+          "nodeId": "cellular",
+          "title": "Hand off to MG52",
+          "detail": "The AT&T backup branch ends at the depicted cellular gateway.",
+          "packetState": "Illustrative cellular handoff",
+          "services": [
+            "AT&T backup"
+          ]
+        }
+      ],
+      "linkIds": [
+        "wifi-client-ap",
+        "lan-ap-9174",
+        "lan-switch-gateway",
+        "gateway-fiber-wan",
+        "wan-router-mg52"
+      ],
+      "assumptions": [
+        "The Wi‑Fi 7 endpoint is associated with LAN CW9174 for this walkthrough. The drawing leaves actual associations unspecified.",
+        "The backup path is selected for the example. The diagram shows the branch off the WAN trunk and leaves the exact port, upstream cellular path and failover timing unspecified."
+      ],
+      "outcome": "MG52 handoff reached."
+    },
+    {
+      "id": "route64-gre",
+      "title": "GRE / BGP to the Internet via ROUTE64",
+      "description": "Follow GRE over Comcast to the ROUTE64 peer, then trace the inner packet to the Internet.",
+      "sourceNodeId": "edge-comcast",
+      "destinationNodeId": "internet",
+      "steps": [
+        {
+          "nodeId": "edge-comcast",
+          "title": "Encapsulate at EDGE-RTR-01",
+          "detail": "The example starts at the depicted tunnel origin. The original traffic source is unspecified.",
+          "packetState": "Inner packet wrapped in GRE for peer transport",
+          "services": [
+            "GRE encapsulation"
+          ]
+        },
+        {
+          "nodeId": "comcast",
+          "title": "Carry GRE over Comcast",
+          "detail": "Comcast is the depicted access circuit selected for the tunnel.",
+          "packetState": "Outer GRE packet in provider transit",
+          "services": []
+        },
+        {
+          "nodeId": "public-transit",
+          "title": "Traverse public transit",
+          "detail": "Public transit represents the intervening networks carrying GRE to ROUTE64.",
+          "packetState": "GRE transport toward ROUTE64",
+          "services": []
+        },
+        {
+          "nodeId": "route64",
+          "title": "Decapsulate at ROUTE64",
+          "detail": "The ROUTE64 peer terminates GRE and recovers the original packet for forwarding through AS18710.",
+          "packetState": "Inner packet recovered after GRE decapsulation",
+          "services": [
+            "GRE termination"
+          ]
+        },
+        {
+          "nodeId": "internet",
+          "title": "Reach the Internet",
+          "detail": "ROUTE64 forwards the inner packet upstream toward its Internet destination.",
+          "packetState": "Inner packet forwarded to the Internet destination",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "edge-comcast-wan",
+        "comcast-public-transit",
+        "public-transit-route64",
+        "route64-internet"
+      ],
+      "assumptions": [
+        "The walkthrough assumes that the underlay can reach the peer and that GRE is configured and usable.",
+        "BGP is the control-plane relationship indicated by the diagram. Session state, exchanged prefixes and policy are unspecified.",
+        "The example assumes that ROUTE64 has a permitted Internet route for the decapsulated traffic. The destination, NAT behavior and return route are unspecified."
+      ],
+      "outcome": "Illustrative Internet destination reached through ROUTE64.",
+      "overlay": {
+        "protocol": "GRE with BGP peering",
+        "fromNodeId": "edge-comcast",
+        "toNodeId": "route64",
+        "logicalLinkId": "comcast-route64-overlay",
+        "underlayLinkIds": [
+          "edge-comcast-wan",
+          "comcast-public-transit",
+          "public-transit-route64"
+        ]
+      }
+    },
+    {
+      "id": "nas-local",
+      "title": "Wi‑Fi 7 to UNAS Pro-8",
+      "description": "Trace a local example from LAN CW9174 to UNAS Pro-8.",
+      "sourceNodeId": "wifi-client",
+      "destinationNodeId": "nas",
+      "steps": [
+        {
+          "nodeId": "wifi-client",
+          "title": "Send over Wi‑Fi 7",
+          "detail": "A representative phone or laptop starts an outbound packet.",
+          "packetState": "Original client packet",
+          "services": [
+            "Wi‑Fi 7"
+          ]
+        },
+        {
+          "nodeId": "lan-cw9174",
+          "title": "Bridge onto Ethernet",
+          "detail": "CW9174 is the selected LAN access point for this example.",
+          "packetState": "Client packet on wired LAN",
+          "services": [
+            "2.5G uplink"
+          ]
+        },
+        {
+          "nodeId": "lan-switch",
+          "title": "Switch locally",
+          "detail": "This example keeps the client and selected destination on a shared forwarding domain.",
+          "packetState": "Client packet in a locally switched frame",
+          "services": []
+        },
+        {
+          "nodeId": "nas",
+          "title": "Deliver to UNAS Pro-8",
+          "detail": "The LAN switch uses the depicted SFP+ attachment to deliver the frame to the NAS.",
+          "packetState": "Illustrative LAN endpoint delivery",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "wifi-client-ap",
+        "lan-ap-9174",
+        "unas-lan-switch"
+      ],
+      "assumptions": [
+        "The Wi‑Fi 7 endpoint is associated with LAN CW9174 for this walkthrough. The drawing leaves actual associations unspecified.",
+        "A shared Layer 2 domain and permitted endpoint traffic are assumed. VLANs, service ports and authorization are unspecified."
+      ],
+      "outcome": "Illustrative local endpoint reached."
+    },
+    {
+      "id": "proxmox-dell-one-local",
+      "title": "Wi‑Fi 7 to Proxmox",
+      "description": "Trace a local example from LAN CW9174 to one Dell OptiPlex i7.",
+      "sourceNodeId": "wifi-client",
+      "destinationNodeId": "proxmox-dell-one",
+      "steps": [
+        {
+          "nodeId": "wifi-client",
+          "title": "Send over Wi‑Fi 7",
+          "detail": "A representative phone or laptop starts an outbound packet.",
+          "packetState": "Original client packet",
+          "services": [
+            "Wi‑Fi 7"
+          ]
+        },
+        {
+          "nodeId": "lan-cw9174",
+          "title": "Bridge onto Ethernet",
+          "detail": "CW9174 is the selected LAN access point for this example.",
+          "packetState": "Client packet on wired LAN",
+          "services": [
+            "2.5G uplink"
+          ]
+        },
+        {
+          "nodeId": "lan-switch",
+          "title": "Switch locally",
+          "detail": "This example keeps the client and selected destination on a shared forwarding domain.",
+          "packetState": "Client packet in a locally switched frame",
+          "services": []
+        },
+        {
+          "nodeId": "proxmox-dell-one",
+          "title": "Deliver to one Dell OptiPlex i7",
+          "detail": "The selected Dell node receives the example. The other two cluster members retain their own links.",
+          "packetState": "Illustrative LAN endpoint delivery",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "wifi-client-ap",
+        "lan-ap-9174",
+        "dell-one-lan"
+      ],
+      "assumptions": [
+        "The Wi‑Fi 7 endpoint is associated with LAN CW9174 for this walkthrough. The drawing leaves actual associations unspecified.",
+        "A shared Layer 2 domain and permitted endpoint traffic are assumed. VLANs, service ports and authorization are unspecified."
+      ],
+      "outcome": "Illustrative local endpoint reached."
+    },
+    {
+      "id": "wireless-iot-handoff",
+      "title": "Wi‑Fi 4 IoT to LAN switch",
+      "description": "Trace one representative wireless IoT device through the LAN access branch.",
+      "sourceNodeId": "wifi-iot",
+      "destinationNodeId": "lan-switch",
+      "steps": [
+        {
+          "nodeId": "wifi-iot",
+          "title": "Send from a Wi‑Fi 4 device",
+          "detail": "A bulb, outlet, doorbell or wireless camera represents this WLAN role.",
+          "packetState": "Original IoT packet",
+          "services": [
+            "Wi‑Fi 4"
+          ]
+        },
+        {
+          "nodeId": "lan-cw9171",
+          "title": "Use LAN CW9171",
+          "detail": "The example associates the client with CW9171 on the LAN side.",
+          "packetState": "IoT packet on wired LAN",
+          "services": [
+            "2.5G uplink"
+          ]
+        },
+        {
+          "nodeId": "lan-switch",
+          "title": "Reach LAN switching",
+          "detail": "The example stops at the common wired LAN switch.",
+          "packetState": "Illustrative LAN handoff",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "wifi-iot-ap",
+        "lan-ap-9171"
+      ],
+      "assumptions": [
+        "The diagram shows shared fan-out to both LAN APs. CW9171 is an authored association; SSIDs and segmentation are unspecified."
+      ],
+      "outcome": "LAN switch handoff reached."
+    },
+    {
+      "id": "wired-iot-handoff",
+      "title": "Wired IoT through Z4C",
+      "description": "Trace the pictured wired IoT branch into the LAN switch.",
+      "sourceNodeId": "wired-iot",
+      "destinationNodeId": "lan-switch",
+      "steps": [
+        {
+          "nodeId": "wired-iot",
+          "title": "Send from wired IoT",
+          "detail": "The pictured wired IoT role originates the example.",
+          "packetState": "Original IoT packet",
+          "services": []
+        },
+        {
+          "nodeId": "z4c",
+          "title": "Cross Z4C",
+          "detail": "The depicted gateway hands permitted traffic toward the LAN switch.",
+          "packetState": "Packet on the Z4C uplink",
+          "services": []
+        },
+        {
+          "nodeId": "lan-switch",
+          "title": "Reach LAN switching",
+          "detail": "The example stops at the common wired LAN switch.",
+          "packetState": "Illustrative LAN handoff",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "wired-iot-z4c",
+        "z4c-lan"
+      ],
+      "assumptions": [
+        "This example assumes the Z4C permits this forwarding. Routing, NAT and isolation rules were not supplied."
+      ],
+      "outcome": "LAN switch handoff reached."
+    },
+    {
+      "id": "camera-handoff",
+      "title": "MV23M camera to Internet via Comcast · Path A",
+      "description": "Follow MV23M camera over Path A to the HA WAN router, then through Comcast to the Internet.",
+      "sourceNodeId": "camera-mv23m",
+      "destinationNodeId": "internet",
+      "steps": [
+        {
+          "nodeId": "camera-mv23m",
+          "title": "Send from MV23M",
+          "detail": "MV23M illustrates the camera branch. MV21 has its own attachment.",
+          "packetState": "Original camera packet",
+          "services": []
+        },
+        {
+          "nodeId": "camera-router",
+          "title": "Forward from the camera branch",
+          "detail": "Path A carries the example from C8121-CW-G2-MX to the HA WAN router.",
+          "packetState": "Packet on the camera uplink",
+          "services": []
+        },
+        {
+          "nodeId": "wan-router",
+          "title": "Select the WAN circuit",
+          "detail": "The HA WAN router hands off the example toward direct Comcast Internet access.",
+          "packetState": "Outbound packet on the authored WAN path",
+          "services": []
+        },
+        {
+          "nodeId": "wan-switch",
+          "title": "Cross WAN distribution",
+          "detail": "MS130-12P passes the packet toward EDGE-RTR-01 on the selected Comcast circuit.",
+          "packetState": "Packet in a WAN-side Ethernet frame",
+          "services": []
+        },
+        {
+          "nodeId": "edge-comcast",
+          "title": "Use the Comcast edge",
+          "detail": "EDGE-RTR-01 forwards toward the shown Comcast access device.",
+          "packetState": "Outbound packet on the selected WAN",
+          "services": []
+        },
+        {
+          "nodeId": "comcast",
+          "title": "Traverse Comcast",
+          "detail": "The selected provider transports the example toward WWW.",
+          "packetState": "Provider transit",
+          "services": []
+        },
+        {
+          "nodeId": "internet",
+          "title": "Reach the Internet boundary",
+          "detail": "The drawing ends at WWW. The application service and reply are outside this walkthrough.",
+          "packetState": "Illustrative Internet delivery",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "mv23m-camera-router",
+        "camera-router-wan-a",
+        "wan-router-switch",
+        "wan-switch-edge-comcast",
+        "edge-comcast-wan",
+        "comcast-internet"
+      ],
+      "assumptions": [
+        "Path A reaches the HA WAN router in this example. Port selection and forwarding permission are illustrative.",
+        "This example assumes a permitted forward route through Comcast. NAT behavior and the return path are unspecified."
+      ],
+      "outcome": "Illustrative Internet destination reached via Comcast."
+    },
+    {
+      "id": "camera-handoff-path-b",
+      "title": "MV23M camera to Internet via ROUTE64 · Path B",
+      "description": "Follow MV23M camera over Path B to the HA WAN router, then through the Comcast GRE tunnel to ROUTE64 and the Internet.",
+      "sourceNodeId": "camera-mv23m",
+      "destinationNodeId": "internet",
+      "steps": [
+        {
+          "nodeId": "camera-mv23m",
+          "title": "Send from MV23M",
+          "detail": "MV23M illustrates the camera branch. MV21 has its own attachment.",
+          "packetState": "Original camera packet",
+          "services": []
+        },
+        {
+          "nodeId": "camera-router",
+          "title": "Forward from the camera branch",
+          "detail": "Path B carries the example from C8121-CW-G2-MX to the HA WAN router.",
+          "packetState": "Packet on the camera uplink",
+          "services": []
+        },
+        {
+          "nodeId": "wan-router",
+          "title": "Select the WAN circuit",
+          "detail": "The HA WAN router hands off the example toward the ROUTE64 tunnel over Comcast.",
+          "packetState": "Outbound packet on the authored WAN path",
+          "services": []
+        },
+        {
+          "nodeId": "wan-switch",
+          "title": "Cross WAN distribution",
+          "detail": "MS130-12P passes the packet toward EDGE-RTR-01 on the selected Comcast circuit.",
+          "packetState": "Packet in a WAN-side Ethernet frame",
+          "services": []
+        },
+        {
+          "nodeId": "edge-comcast",
+          "title": "Encapsulate at EDGE-RTR-01",
+          "detail": "The example starts at the depicted tunnel origin. The original traffic source is unspecified.",
+          "packetState": "Inner packet wrapped in GRE for peer transport",
+          "services": [
+            "GRE encapsulation"
+          ]
+        },
+        {
+          "nodeId": "comcast",
+          "title": "Carry GRE over Comcast",
+          "detail": "Comcast is the depicted access circuit selected for the tunnel.",
+          "packetState": "Outer GRE packet in provider transit",
+          "services": []
+        },
+        {
+          "nodeId": "public-transit",
+          "title": "Traverse public transit",
+          "detail": "Public transit represents the intervening networks carrying GRE to ROUTE64.",
+          "packetState": "GRE transport toward ROUTE64",
+          "services": []
+        },
+        {
+          "nodeId": "route64",
+          "title": "Decapsulate at ROUTE64",
+          "detail": "The ROUTE64 peer terminates GRE and recovers the original packet for forwarding through AS18710.",
+          "packetState": "Inner packet recovered after GRE decapsulation",
+          "services": [
+            "GRE termination"
+          ]
+        },
+        {
+          "nodeId": "internet",
+          "title": "Reach the Internet",
+          "detail": "ROUTE64 forwards the inner packet upstream toward its Internet destination.",
+          "packetState": "Inner packet forwarded to the Internet destination",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "mv23m-camera-router",
+        "camera-router-wan-b",
+        "wan-router-switch",
+        "wan-switch-edge-comcast",
+        "edge-comcast-wan",
+        "comcast-public-transit",
+        "public-transit-route64",
+        "route64-internet"
+      ],
+      "assumptions": [
+        "Path B reaches the HA WAN router in this example. Port selection and forwarding permission are illustrative.",
+        "The walkthrough assumes that the underlay can reach the peer and that GRE is configured and usable.",
+        "BGP is the control-plane relationship indicated by the diagram. Session state, exchanged prefixes and policy are unspecified.",
+        "The example assumes that ROUTE64 has a permitted Internet route for the decapsulated traffic. The destination, NAT behavior and return route are unspecified."
+      ],
+      "outcome": "Illustrative Internet destination reached through ROUTE64.",
+      "overlay": {
+        "protocol": "GRE with BGP peering",
+        "fromNodeId": "edge-comcast",
+        "toNodeId": "route64",
+        "logicalLinkId": "comcast-route64-overlay",
+        "underlayLinkIds": [
+          "edge-comcast-wan",
+          "comcast-public-transit",
+          "public-transit-route64"
+        ]
+      }
+    },
+    {
+      "id": "webex-teleworker",
+      "title": "Webex Desk to Internet via Comcast · Path A",
+      "description": "Follow Webex Desk over Path A to the HA WAN router, then through Comcast to the Internet.",
+      "sourceNodeId": "webex-desk",
+      "destinationNodeId": "internet",
+      "steps": [
+        {
+          "nodeId": "webex-desk",
+          "title": "Send from Webex Desk",
+          "detail": "The collaboration endpoint originates the example toward MX75.",
+          "packetState": "Original collaboration packet",
+          "services": []
+        },
+        {
+          "nodeId": "teleworker-mx",
+          "title": "Cross the MX75",
+          "detail": "The kit’s MX75 is the first shown teleworker forwarding device.",
+          "packetState": "Packet on the MX75 uplink",
+          "services": []
+        },
+        {
+          "nodeId": "teleworker-edge",
+          "title": "Cross C8131-G2",
+          "detail": "Path A carries the example from C8131-G2 to the HA WAN router.",
+          "packetState": "Packet on the teleworker uplink",
+          "services": []
+        },
+        {
+          "nodeId": "wan-router",
+          "title": "Select the WAN circuit",
+          "detail": "The HA WAN router hands off the example toward direct Comcast Internet access.",
+          "packetState": "Outbound packet on the authored WAN path",
+          "services": []
+        },
+        {
+          "nodeId": "wan-switch",
+          "title": "Cross WAN distribution",
+          "detail": "MS130-12P passes the packet toward EDGE-RTR-01 on the selected Comcast circuit.",
+          "packetState": "Packet in a WAN-side Ethernet frame",
+          "services": []
+        },
+        {
+          "nodeId": "edge-comcast",
+          "title": "Use the Comcast edge",
+          "detail": "EDGE-RTR-01 forwards toward the shown Comcast access device.",
+          "packetState": "Outbound packet on the selected WAN",
+          "services": []
+        },
+        {
+          "nodeId": "comcast",
+          "title": "Traverse Comcast",
+          "detail": "The selected provider transports the example toward WWW.",
+          "packetState": "Provider transit",
+          "services": []
+        },
+        {
+          "nodeId": "internet",
+          "title": "Reach the Internet boundary",
+          "detail": "The drawing ends at WWW. The application service and reply are outside this walkthrough.",
+          "packetState": "Illustrative Internet delivery",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "webex-mx75",
+        "mx75-teleworker-edge",
+        "teleworker-edge-wan-a",
+        "wan-router-switch",
+        "wan-switch-edge-comcast",
+        "edge-comcast-wan",
+        "comcast-internet"
+      ],
+      "assumptions": [
+        "Path A reaches the HA WAN router in this example. Port selection and forwarding permission are illustrative.",
+        "This example assumes a permitted forward route through Comcast. NAT behavior and the return path are unspecified."
+      ],
+      "outcome": "Illustrative Internet destination reached via Comcast."
+    },
+    {
+      "id": "webex-teleworker-path-b",
+      "title": "Webex Desk to Internet via ROUTE64 · Path B",
+      "description": "Follow Webex Desk over Path B to the HA WAN router, then through the Comcast GRE tunnel to ROUTE64 and the Internet.",
+      "sourceNodeId": "webex-desk",
+      "destinationNodeId": "internet",
+      "steps": [
+        {
+          "nodeId": "webex-desk",
+          "title": "Send from Webex Desk",
+          "detail": "The collaboration endpoint originates the example toward MX75.",
+          "packetState": "Original collaboration packet",
+          "services": []
+        },
+        {
+          "nodeId": "teleworker-mx",
+          "title": "Cross the MX75",
+          "detail": "The kit’s MX75 is the first shown teleworker forwarding device.",
+          "packetState": "Packet on the MX75 uplink",
+          "services": []
+        },
+        {
+          "nodeId": "teleworker-edge",
+          "title": "Cross C8131-G2",
+          "detail": "Path B carries the example from C8131-G2 to the HA WAN router.",
+          "packetState": "Packet on the teleworker uplink",
+          "services": []
+        },
+        {
+          "nodeId": "wan-router",
+          "title": "Select the WAN circuit",
+          "detail": "The HA WAN router hands off the example toward the ROUTE64 tunnel over Comcast.",
+          "packetState": "Outbound packet on the authored WAN path",
+          "services": []
+        },
+        {
+          "nodeId": "wan-switch",
+          "title": "Cross WAN distribution",
+          "detail": "MS130-12P passes the packet toward EDGE-RTR-01 on the selected Comcast circuit.",
+          "packetState": "Packet in a WAN-side Ethernet frame",
+          "services": []
+        },
+        {
+          "nodeId": "edge-comcast",
+          "title": "Encapsulate at EDGE-RTR-01",
+          "detail": "The example starts at the depicted tunnel origin. The original traffic source is unspecified.",
+          "packetState": "Inner packet wrapped in GRE for peer transport",
+          "services": [
+            "GRE encapsulation"
+          ]
+        },
+        {
+          "nodeId": "comcast",
+          "title": "Carry GRE over Comcast",
+          "detail": "Comcast is the depicted access circuit selected for the tunnel.",
+          "packetState": "Outer GRE packet in provider transit",
+          "services": []
+        },
+        {
+          "nodeId": "public-transit",
+          "title": "Traverse public transit",
+          "detail": "Public transit represents the intervening networks carrying GRE to ROUTE64.",
+          "packetState": "GRE transport toward ROUTE64",
+          "services": []
+        },
+        {
+          "nodeId": "route64",
+          "title": "Decapsulate at ROUTE64",
+          "detail": "The ROUTE64 peer terminates GRE and recovers the original packet for forwarding through AS18710.",
+          "packetState": "Inner packet recovered after GRE decapsulation",
+          "services": [
+            "GRE termination"
+          ]
+        },
+        {
+          "nodeId": "internet",
+          "title": "Reach the Internet",
+          "detail": "ROUTE64 forwards the inner packet upstream toward its Internet destination.",
+          "packetState": "Inner packet forwarded to the Internet destination",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "webex-mx75",
+        "mx75-teleworker-edge",
+        "teleworker-edge-wan-b",
+        "wan-router-switch",
+        "wan-switch-edge-comcast",
+        "edge-comcast-wan",
+        "comcast-public-transit",
+        "public-transit-route64",
+        "route64-internet"
+      ],
+      "assumptions": [
+        "Path B reaches the HA WAN router in this example. Port selection and forwarding permission are illustrative.",
+        "The walkthrough assumes that the underlay can reach the peer and that GRE is configured and usable.",
+        "BGP is the control-plane relationship indicated by the diagram. Session state, exchanged prefixes and policy are unspecified.",
+        "The example assumes that ROUTE64 has a permitted Internet route for the decapsulated traffic. The destination, NAT behavior and return route are unspecified."
+      ],
+      "outcome": "Illustrative Internet destination reached through ROUTE64.",
+      "overlay": {
+        "protocol": "GRE with BGP peering",
+        "fromNodeId": "edge-comcast",
+        "toNodeId": "route64",
+        "logicalLinkId": "comcast-route64-overlay",
+        "underlayLinkIds": [
+          "edge-comcast-wan",
+          "comcast-public-transit",
+          "public-transit-route64"
+        ]
+      }
+    },
+    {
+      "id": "wifi7-route64-internet",
+      "title": "Wi‑Fi 7 to Internet via ROUTE64",
+      "description": "Trace a Wi‑Fi 7 client through the LAN, the Comcast GRE underlay and the ROUTE64 Internet egress.",
+      "sourceNodeId": "wifi-client",
+      "destinationNodeId": "internet",
+      "steps": [
+        {
+          "nodeId": "wifi-client",
+          "title": "Send over Wi‑Fi 7",
+          "detail": "A representative phone or laptop starts an outbound packet.",
+          "packetState": "Original client packet",
+          "services": [
+            "Wi‑Fi 7"
+          ]
+        },
+        {
+          "nodeId": "lan-cw9174",
+          "title": "Bridge onto Ethernet",
+          "detail": "CW9174 is the selected LAN access point for this example.",
+          "packetState": "Client packet on wired LAN",
+          "services": [
+            "2.5G uplink"
+          ]
+        },
+        {
+          "nodeId": "lan-switch",
+          "title": "Forward toward the LAN gateway",
+          "detail": "The USW Pro Max 16 forwards the frame to Gateway Fiber on the depicted SFP+ uplink.",
+          "packetState": "Client packet in a switched Ethernet frame",
+          "services": [
+            "SFP+"
+          ]
+        },
+        {
+          "nodeId": "gateway-fiber",
+          "title": "Route out of the LAN",
+          "detail": "Gateway Fiber sends this permitted example toward the HA WAN router.",
+          "packetState": "Packet routed toward the WAN",
+          "services": [
+            "LAN routing"
+          ]
+        },
+        {
+          "nodeId": "wan-router",
+          "title": "Select the WAN circuit",
+          "detail": "The HA WAN router hands off the example toward the ROUTE64 tunnel over Comcast.",
+          "packetState": "Outbound packet on the authored WAN path",
+          "services": []
+        },
+        {
+          "nodeId": "wan-switch",
+          "title": "Cross WAN distribution",
+          "detail": "MS130-12P passes the packet toward EDGE-RTR-01 on the selected Comcast circuit.",
+          "packetState": "Packet in a WAN-side Ethernet frame",
+          "services": []
+        },
+        {
+          "nodeId": "edge-comcast",
+          "title": "Encapsulate at EDGE-RTR-01",
+          "detail": "The example starts at the depicted tunnel origin. The original traffic source is unspecified.",
+          "packetState": "Inner packet wrapped in GRE for peer transport",
+          "services": [
+            "GRE encapsulation"
+          ]
+        },
+        {
+          "nodeId": "comcast",
+          "title": "Carry GRE over Comcast",
+          "detail": "Comcast is the depicted access circuit selected for the tunnel.",
+          "packetState": "Outer GRE packet in provider transit",
+          "services": []
+        },
+        {
+          "nodeId": "public-transit",
+          "title": "Traverse public transit",
+          "detail": "Public transit represents the intervening networks carrying GRE to ROUTE64.",
+          "packetState": "GRE transport toward ROUTE64",
+          "services": []
+        },
+        {
+          "nodeId": "route64",
+          "title": "Decapsulate at ROUTE64",
+          "detail": "The ROUTE64 peer terminates GRE and recovers the original packet for forwarding through AS18710.",
+          "packetState": "Inner packet recovered after GRE decapsulation",
+          "services": [
+            "GRE termination"
+          ]
+        },
+        {
+          "nodeId": "internet",
+          "title": "Reach the Internet",
+          "detail": "ROUTE64 forwards the inner packet upstream toward its Internet destination.",
+          "packetState": "Inner packet forwarded to the Internet destination",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "wifi-client-ap",
+        "lan-ap-9174",
+        "lan-switch-gateway",
+        "gateway-fiber-wan",
+        "wan-router-switch",
+        "wan-switch-edge-comcast",
+        "edge-comcast-wan",
+        "comcast-public-transit",
+        "public-transit-route64",
+        "route64-internet"
+      ],
+      "assumptions": [
+        "The Wi‑Fi 7 endpoint is associated with LAN CW9174 for this walkthrough. The drawing leaves actual associations unspecified.",
+        "The client and gateways are assumed to permit this outbound route.",
+        "The walkthrough assumes that the underlay can reach the peer and that GRE is configured and usable.",
+        "BGP is the control-plane relationship indicated by the diagram. Session state, exchanged prefixes and policy are unspecified.",
+        "The example assumes that ROUTE64 has a permitted Internet route for the decapsulated traffic. The destination, NAT behavior and return route are unspecified."
+      ],
+      "outcome": "Illustrative Internet destination reached through ROUTE64.",
+      "overlay": {
+        "protocol": "GRE with BGP peering",
+        "fromNodeId": "edge-comcast",
+        "toNodeId": "route64",
+        "logicalLinkId": "comcast-route64-overlay",
+        "underlayLinkIds": [
+          "edge-comcast-wan",
+          "comcast-public-transit",
+          "public-transit-route64"
+        ]
+      }
+    },
+    {
+      "id": "c8121-ha-route64-internet",
+      "title": "C8121-G2-MX to Internet via ROUTE64",
+      "description": "Start a router-originated packet on the HA WAN router and follow the GRE path to the Internet.",
+      "sourceNodeId": "wan-router",
+      "destinationNodeId": "internet",
+      "steps": [
+        {
+          "nodeId": "wan-router",
+          "title": "Originate on C8121-G2-MX",
+          "detail": "The HA WAN router originates an example packet and selects the WAN path toward EDGE-RTR-01.",
+          "packetState": "Router-originated packet",
+          "services": []
+        },
+        {
+          "nodeId": "wan-switch",
+          "title": "Cross WAN distribution",
+          "detail": "MS130-12P passes the packet toward EDGE-RTR-01 on the selected Comcast circuit.",
+          "packetState": "Packet in a WAN-side Ethernet frame",
+          "services": []
+        },
+        {
+          "nodeId": "edge-comcast",
+          "title": "Encapsulate at EDGE-RTR-01",
+          "detail": "The example starts at the depicted tunnel origin. The original traffic source is unspecified.",
+          "packetState": "Inner packet wrapped in GRE for peer transport",
+          "services": [
+            "GRE encapsulation"
+          ]
+        },
+        {
+          "nodeId": "comcast",
+          "title": "Carry GRE over Comcast",
+          "detail": "Comcast is the depicted access circuit selected for the tunnel.",
+          "packetState": "Outer GRE packet in provider transit",
+          "services": []
+        },
+        {
+          "nodeId": "public-transit",
+          "title": "Traverse public transit",
+          "detail": "Public transit represents the intervening networks carrying GRE to ROUTE64.",
+          "packetState": "GRE transport toward ROUTE64",
+          "services": []
+        },
+        {
+          "nodeId": "route64",
+          "title": "Decapsulate at ROUTE64",
+          "detail": "The ROUTE64 peer terminates GRE and recovers the original packet for forwarding through AS18710.",
+          "packetState": "Inner packet recovered after GRE decapsulation",
+          "services": [
+            "GRE termination"
+          ]
+        },
+        {
+          "nodeId": "internet",
+          "title": "Reach the Internet",
+          "detail": "ROUTE64 forwards the inner packet upstream toward its Internet destination.",
+          "packetState": "Inner packet forwarded to the Internet destination",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "wan-router-switch",
+        "wan-switch-edge-comcast",
+        "edge-comcast-wan",
+        "comcast-public-transit",
+        "public-transit-route64",
+        "route64-internet"
+      ],
+      "assumptions": [
+        "The source interface, router policy and circuit selection are illustrative.",
+        "The walkthrough assumes that the underlay can reach the peer and that GRE is configured and usable.",
+        "BGP is the control-plane relationship indicated by the diagram. Session state, exchanged prefixes and policy are unspecified.",
+        "The example assumes that ROUTE64 has a permitted Internet route for the decapsulated traffic. The destination, NAT behavior and return route are unspecified."
+      ],
+      "outcome": "Illustrative Internet destination reached through ROUTE64.",
+      "overlay": {
+        "protocol": "GRE with BGP peering",
+        "fromNodeId": "edge-comcast",
+        "toNodeId": "route64",
+        "logicalLinkId": "comcast-route64-overlay",
+        "underlayLinkIds": [
+          "edge-comcast-wan",
+          "comcast-public-transit",
+          "public-transit-route64"
+        ]
+      }
+    },
+    {
+      "id": "c8121-camera-route64-internet",
+      "title": "C8121-CW-G2-MX to Internet via ROUTE64",
+      "description": "Start on the camera router and use its Path B toward the WAN router, then follow the GRE route.",
+      "sourceNodeId": "camera-router",
+      "destinationNodeId": "internet",
+      "steps": [
+        {
+          "nodeId": "camera-router",
+          "title": "Originate on C8121-CW-G2-MX",
+          "detail": "The camera router originates an example packet and hands it to the HA WAN router over Path B.",
+          "packetState": "Router-originated packet",
+          "services": []
+        },
+        {
+          "nodeId": "wan-router",
+          "title": "Select the WAN circuit",
+          "detail": "The HA WAN router hands off the example toward the ROUTE64 tunnel over Comcast.",
+          "packetState": "Outbound packet on the authored WAN path",
+          "services": []
+        },
+        {
+          "nodeId": "wan-switch",
+          "title": "Cross WAN distribution",
+          "detail": "MS130-12P passes the packet toward EDGE-RTR-01 on the selected Comcast circuit.",
+          "packetState": "Packet in a WAN-side Ethernet frame",
+          "services": []
+        },
+        {
+          "nodeId": "edge-comcast",
+          "title": "Encapsulate at EDGE-RTR-01",
+          "detail": "The example starts at the depicted tunnel origin. The original traffic source is unspecified.",
+          "packetState": "Inner packet wrapped in GRE for peer transport",
+          "services": [
+            "GRE encapsulation"
+          ]
+        },
+        {
+          "nodeId": "comcast",
+          "title": "Carry GRE over Comcast",
+          "detail": "Comcast is the depicted access circuit selected for the tunnel.",
+          "packetState": "Outer GRE packet in provider transit",
+          "services": []
+        },
+        {
+          "nodeId": "public-transit",
+          "title": "Traverse public transit",
+          "detail": "Public transit represents the intervening networks carrying GRE to ROUTE64.",
+          "packetState": "GRE transport toward ROUTE64",
+          "services": []
+        },
+        {
+          "nodeId": "route64",
+          "title": "Decapsulate at ROUTE64",
+          "detail": "The ROUTE64 peer terminates GRE and recovers the original packet for forwarding through AS18710.",
+          "packetState": "Inner packet recovered after GRE decapsulation",
+          "services": [
+            "GRE termination"
+          ]
+        },
+        {
+          "nodeId": "internet",
+          "title": "Reach the Internet",
+          "detail": "ROUTE64 forwards the inner packet upstream toward its Internet destination.",
+          "packetState": "Inner packet forwarded to the Internet destination",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "camera-router-wan-b",
+        "wan-router-switch",
+        "wan-switch-edge-comcast",
+        "edge-comcast-wan",
+        "comcast-public-transit",
+        "public-transit-route64",
+        "route64-internet"
+      ],
+      "assumptions": [
+        "The router uses Path B in this authored case. A camera client is unnecessary for this router-originated packet.",
+        "The walkthrough assumes that the underlay can reach the peer and that GRE is configured and usable.",
+        "BGP is the control-plane relationship indicated by the diagram. Session state, exchanged prefixes and policy are unspecified.",
+        "The example assumes that ROUTE64 has a permitted Internet route for the decapsulated traffic. The destination, NAT behavior and return route are unspecified."
+      ],
+      "outcome": "Illustrative Internet destination reached through ROUTE64.",
+      "overlay": {
+        "protocol": "GRE with BGP peering",
+        "fromNodeId": "edge-comcast",
+        "toNodeId": "route64",
+        "logicalLinkId": "comcast-route64-overlay",
+        "underlayLinkIds": [
+          "edge-comcast-wan",
+          "comcast-public-transit",
+          "public-transit-route64"
+        ]
+      }
+    },
+    {
+      "id": "c8131-route64-internet",
+      "title": "C8131-G2 to Internet via ROUTE64",
+      "description": "Start on C8131-G2 and follow Path B to the HA WAN router, then the GRE route to the Internet.",
+      "sourceNodeId": "teleworker-edge",
+      "destinationNodeId": "internet",
+      "steps": [
+        {
+          "nodeId": "teleworker-edge",
+          "title": "Originate on C8131-G2",
+          "detail": "The router originates an example packet and selects Path B toward the HA WAN router.",
+          "packetState": "Router-originated packet",
+          "services": []
+        },
+        {
+          "nodeId": "wan-router",
+          "title": "Select the WAN circuit",
+          "detail": "The HA WAN router hands off the example toward the ROUTE64 tunnel over Comcast.",
+          "packetState": "Outbound packet on the authored WAN path",
+          "services": []
+        },
+        {
+          "nodeId": "wan-switch",
+          "title": "Cross WAN distribution",
+          "detail": "MS130-12P passes the packet toward EDGE-RTR-01 on the selected Comcast circuit.",
+          "packetState": "Packet in a WAN-side Ethernet frame",
+          "services": []
+        },
+        {
+          "nodeId": "edge-comcast",
+          "title": "Encapsulate at EDGE-RTR-01",
+          "detail": "The example starts at the depicted tunnel origin. The original traffic source is unspecified.",
+          "packetState": "Inner packet wrapped in GRE for peer transport",
+          "services": [
+            "GRE encapsulation"
+          ]
+        },
+        {
+          "nodeId": "comcast",
+          "title": "Carry GRE over Comcast",
+          "detail": "Comcast is the depicted access circuit selected for the tunnel.",
+          "packetState": "Outer GRE packet in provider transit",
+          "services": []
+        },
+        {
+          "nodeId": "public-transit",
+          "title": "Traverse public transit",
+          "detail": "Public transit represents the intervening networks carrying GRE to ROUTE64.",
+          "packetState": "GRE transport toward ROUTE64",
+          "services": []
+        },
+        {
+          "nodeId": "route64",
+          "title": "Decapsulate at ROUTE64",
+          "detail": "The ROUTE64 peer terminates GRE and recovers the original packet for forwarding through AS18710.",
+          "packetState": "Inner packet recovered after GRE decapsulation",
+          "services": [
+            "GRE termination"
+          ]
+        },
+        {
+          "nodeId": "internet",
+          "title": "Reach the Internet",
+          "detail": "ROUTE64 forwards the inner packet upstream toward its Internet destination.",
+          "packetState": "Inner packet forwarded to the Internet destination",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "teleworker-edge-wan-b",
+        "wan-router-switch",
+        "wan-switch-edge-comcast",
+        "edge-comcast-wan",
+        "comcast-public-transit",
+        "public-transit-route64",
+        "route64-internet"
+      ],
+      "assumptions": [
+        "The router uses Path B in this authored case. Source interfaces and router policy are unspecified.",
+        "The walkthrough assumes that the underlay can reach the peer and that GRE is configured and usable.",
+        "BGP is the control-plane relationship indicated by the diagram. Session state, exchanged prefixes and policy are unspecified.",
+        "The example assumes that ROUTE64 has a permitted Internet route for the decapsulated traffic. The destination, NAT behavior and return route are unspecified."
+      ],
+      "outcome": "Illustrative Internet destination reached through ROUTE64.",
+      "overlay": {
+        "protocol": "GRE with BGP peering",
+        "fromNodeId": "edge-comcast",
+        "toNodeId": "route64",
+        "logicalLinkId": "comcast-route64-overlay",
+        "underlayLinkIds": [
+          "edge-comcast-wan",
+          "comcast-public-transit",
+          "public-transit-route64"
+        ]
+      }
+    },
+    {
+      "id": "proxmox-route64-internet",
+      "title": "Proxmox node to Internet via ROUTE64",
+      "description": "Trace one Dell OptiPlex i7 cluster node through the LAN gateway and ROUTE64 to the Internet.",
+      "sourceNodeId": "proxmox-dell-one",
+      "destinationNodeId": "internet",
+      "steps": [
+        {
+          "nodeId": "proxmox-dell-one",
+          "title": "Send from a Proxmox node",
+          "detail": "Dell OptiPlex i7 · 1 originates the example packet toward its LAN gateway.",
+          "packetState": "Original cluster-node packet",
+          "services": []
+        },
+        {
+          "nodeId": "lan-switch",
+          "title": "Forward toward the LAN gateway",
+          "detail": "The USW Pro Max 16 forwards the frame to Gateway Fiber on the depicted SFP+ uplink.",
+          "packetState": "Client packet in a switched Ethernet frame",
+          "services": [
+            "SFP+"
+          ]
+        },
+        {
+          "nodeId": "gateway-fiber",
+          "title": "Route out of the LAN",
+          "detail": "Gateway Fiber sends this permitted example toward the HA WAN router.",
+          "packetState": "Packet routed toward the WAN",
+          "services": [
+            "LAN routing"
+          ]
+        },
+        {
+          "nodeId": "wan-router",
+          "title": "Select the WAN circuit",
+          "detail": "The HA WAN router hands off the example toward the ROUTE64 tunnel over Comcast.",
+          "packetState": "Outbound packet on the authored WAN path",
+          "services": []
+        },
+        {
+          "nodeId": "wan-switch",
+          "title": "Cross WAN distribution",
+          "detail": "MS130-12P passes the packet toward EDGE-RTR-01 on the selected Comcast circuit.",
+          "packetState": "Packet in a WAN-side Ethernet frame",
+          "services": []
+        },
+        {
+          "nodeId": "edge-comcast",
+          "title": "Encapsulate at EDGE-RTR-01",
+          "detail": "The example starts at the depicted tunnel origin. The original traffic source is unspecified.",
+          "packetState": "Inner packet wrapped in GRE for peer transport",
+          "services": [
+            "GRE encapsulation"
+          ]
+        },
+        {
+          "nodeId": "comcast",
+          "title": "Carry GRE over Comcast",
+          "detail": "Comcast is the depicted access circuit selected for the tunnel.",
+          "packetState": "Outer GRE packet in provider transit",
+          "services": []
+        },
+        {
+          "nodeId": "public-transit",
+          "title": "Traverse public transit",
+          "detail": "Public transit represents the intervening networks carrying GRE to ROUTE64.",
+          "packetState": "GRE transport toward ROUTE64",
+          "services": []
+        },
+        {
+          "nodeId": "route64",
+          "title": "Decapsulate at ROUTE64",
+          "detail": "The ROUTE64 peer terminates GRE and recovers the original packet for forwarding through AS18710.",
+          "packetState": "Inner packet recovered after GRE decapsulation",
+          "services": [
+            "GRE termination"
+          ]
+        },
+        {
+          "nodeId": "internet",
+          "title": "Reach the Internet",
+          "detail": "ROUTE64 forwards the inner packet upstream toward its Internet destination.",
+          "packetState": "Inner packet forwarded to the Internet destination",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "dell-one-lan",
+        "lan-switch-gateway",
+        "gateway-fiber-wan",
+        "wan-router-switch",
+        "wan-switch-edge-comcast",
+        "edge-comcast-wan",
+        "comcast-public-transit",
+        "public-transit-route64",
+        "route64-internet"
+      ],
+      "assumptions": [
+        "Dell OptiPlex i7 · 1 represents the cluster. Its addressing, VLAN assignment and outbound permission are assumed.",
+        "The walkthrough assumes that the underlay can reach the peer and that GRE is configured and usable.",
+        "BGP is the control-plane relationship indicated by the diagram. Session state, exchanged prefixes and policy are unspecified.",
+        "The example assumes that ROUTE64 has a permitted Internet route for the decapsulated traffic. The destination, NAT behavior and return route are unspecified."
+      ],
+      "outcome": "Illustrative Internet destination reached through ROUTE64.",
+      "overlay": {
+        "protocol": "GRE with BGP peering",
+        "fromNodeId": "edge-comcast",
+        "toNodeId": "route64",
+        "logicalLinkId": "comcast-route64-overlay",
+        "underlayLinkIds": [
+          "edge-comcast-wan",
+          "comcast-public-transit",
+          "public-transit-route64"
+        ]
+      }
+    }
+  ]
+}
