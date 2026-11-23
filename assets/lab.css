@@ -142,6 +142,7 @@
 .legend-wireless { border-block-start-style: dashed; }
 .legend-overlay { border-block-start: 3px dotted var(--accent); }
 .legend-route { border-block-start: 3px solid var(--brand); }
+.legend-management { border-block-start: 3px dashed var(--brand); }
 .lab-map-frame {
   --lab-zoom-hit: 32px;
   position: relative;
@@ -193,8 +194,10 @@
   stroke-width: 4;
 }
 #lab-map .route-link[data-reached="true"] .map-wire { stroke-width: 5; }
-#lab-map .route-link[data-direction="end"] .map-wire { marker-end: url(#route-arrow); }
-#lab-map .route-link[data-direction="start"] .map-wire { marker-start: url(#route-arrow); }
+.map-links [data-kind="management"] { display: none; }
+#lab-map .route-link[data-kind="management"] .map-wire { stroke-dasharray: 9 5 2 5; }
+#lab-map .route-link:is([data-direction="end"], [data-direction="both"]) .map-wire { marker-end: url(#route-arrow); }
+#lab-map .route-link:is([data-direction="start"], [data-direction="both"]) .map-wire { marker-start: url(#route-arrow); }
 #route-arrow path { fill: var(--brand); }
 .map-label {
   font-size: 14px;

@@ -371,6 +371,16 @@
       },
       "clientType": "wifi-client",
       "symbol": "wireless-client"
+    },
+    {
+      "id": "unifi-console-vm",
+      "type": "controller",
+      "label": "UniFi Console VM",
+      "subtitle": "Proxmox cluster VM",
+      "position": {
+        "x": 1100,
+        "y": 1203
+      }
     }
   ],
   "links": [
@@ -980,6 +990,135 @@
       "kind": "wireless",
       "bidirectional": true,
       "note": "Representative Wi‑Fi 7 association. Both WLAN labels meet the same AP fan-out in the drawing."
+    },
+    {
+      "id": "unifi-manage-gateway-fiber",
+      "fromNode": "unifi-console-vm",
+      "toNode": "gateway-fiber",
+      "kind": "management",
+      "bidirectional": true,
+      "via": [
+        [
+          1030,
+          1147
+        ],
+        [
+          991,
+          1034
+        ],
+        [
+          837,
+          866
+        ],
+        [
+          730,
+          754
+        ]
+      ]
+    },
+    {
+      "id": "unifi-manage-gateway-max",
+      "fromNode": "unifi-console-vm",
+      "toNode": "gateway-max",
+      "kind": "management",
+      "bidirectional": true,
+      "via": [
+        [
+          966,
+          1235
+        ],
+        [
+          822,
+          1310
+        ],
+        [
+          570,
+          1310
+        ],
+        [
+          389,
+          1192
+        ],
+        [
+          323,
+          1118
+        ]
+      ]
+    },
+    {
+      "id": "unifi-manage-unifi-iot-ap",
+      "fromNode": "unifi-console-vm",
+      "toNode": "unifi-iot-ap",
+      "kind": "management",
+      "bidirectional": true,
+      "via": [
+        [
+          1000,
+          1172
+        ],
+        [
+          793,
+          1020
+        ],
+        [
+          756,
+          823
+        ],
+        [
+          542,
+          793
+        ]
+      ]
+    },
+    {
+      "id": "unifi-manage-lan-switch",
+      "fromNode": "unifi-console-vm",
+      "toNode": "lan-switch",
+      "kind": "management",
+      "bidirectional": true,
+      "via": [
+        [
+          978,
+          1183
+        ],
+        [
+          800,
+          1086
+        ],
+        [
+          730,
+          920
+        ]
+      ]
+    },
+    {
+      "id": "unifi-manage-nas",
+      "fromNode": "unifi-console-vm",
+      "toNode": "nas",
+      "kind": "management",
+      "bidirectional": true,
+      "via": [
+        [
+          965,
+          1205
+        ],
+        [
+          790,
+          1165
+        ],
+        [
+          598,
+          1132
+        ],
+        [
+          527,
+          1005
+        ],
+        [
+          425,
+          932
+        ]
+      ]
     }
   ],
   "groups": [
@@ -988,12 +1127,13 @@
       "nodeIds": [
         "proxmox-dell-one",
         "proxmox-dell-two",
-        "proxmox-qotom"
+        "proxmox-qotom",
+        "unifi-console-vm"
       ]
     }
   ],
   "assumptions": [
-    "The device inventory and link layout are transcribed from the supplied diagram. The walkthroughs describe authored forwarding examples.",
+    "The physical topology follows the supplied diagram. The UniFi Console VM and its logical management links reflect the user's later topology update. Walkthroughs illustrate forwarding and management exchanges.",
     "Device and link state, route preferences, exact port and VLAN assignments, NAT behavior and return routes require separate verification.",
     "The WAN-side APs attach to the indicated edge branches. Their exact terminations and the MG52 branch’s exact port are unspecified.",
     "The camera router and C8131-G2 each have two separately drawn paths to the HA WAN router. Their ports, link aggregation and actual forwarding preference are unspecified.",
@@ -2409,6 +2549,123 @@
           "public-transit-route64"
         ]
       }
+    }
+  ],
+  "managementScenarios": [
+    {
+      "id": "unifi-management",
+      "title": "UniFi network management",
+      "description": "Follow a series of management exchanges from the UniFi Console VM to its five managed devices.",
+      "sourceNodeId": "unifi-console-vm",
+      "destinationNodeId": "unifi-console-vm",
+      "steps": [
+        {
+          "nodeId": "unifi-console-vm",
+          "title": "Open the UniFi Console",
+          "detail": "Start at the UniFi Console VM hosted in the Proxmox cluster.",
+          "packetState": "Management session starts at the console VM",
+          "services": [
+            "UniFi management"
+          ]
+        },
+        {
+          "nodeId": "gateway-fiber",
+          "title": "Manage UniFi Gateway Fiber",
+          "detail": "The console manages the UniFi Gateway Fiber LAN gateway.",
+          "packetState": "Logical management exchange",
+          "services": [
+            "UniFi management"
+          ]
+        },
+        {
+          "nodeId": "unifi-console-vm",
+          "title": "Return to the console for UniFi Gateway Max",
+          "detail": "The walkthrough returns to the console after covering UniFi Gateway Fiber.",
+          "packetState": "Ready for the next management exchange",
+          "services": []
+        },
+        {
+          "nodeId": "gateway-max",
+          "title": "Manage UniFi Gateway Max",
+          "detail": "The console manages the UniFi Gateway Max test gateway.",
+          "packetState": "Logical management exchange",
+          "services": [
+            "UniFi management"
+          ]
+        },
+        {
+          "nodeId": "unifi-console-vm",
+          "title": "Return to the console for UniFi AP",
+          "detail": "The walkthrough returns to the console after covering UniFi Gateway Max.",
+          "packetState": "Ready for the next management exchange",
+          "services": []
+        },
+        {
+          "nodeId": "unifi-iot-ap",
+          "title": "Manage UniFi AP",
+          "detail": "The console manages the standalone UniFi Wi-Fi 4 AP.",
+          "packetState": "Logical management exchange",
+          "services": [
+            "UniFi management"
+          ]
+        },
+        {
+          "nodeId": "unifi-console-vm",
+          "title": "Return to the console for USW Pro Max 16",
+          "detail": "The walkthrough returns to the console after covering UniFi AP.",
+          "packetState": "Ready for the next management exchange",
+          "services": []
+        },
+        {
+          "nodeId": "lan-switch",
+          "title": "Manage USW Pro Max 16",
+          "detail": "The console manages the USW Pro Max 16 LAN switch.",
+          "packetState": "Logical management exchange",
+          "services": [
+            "UniFi management"
+          ]
+        },
+        {
+          "nodeId": "unifi-console-vm",
+          "title": "Return to the console for UNAS Pro-8",
+          "detail": "The walkthrough returns to the console after covering USW Pro Max 16.",
+          "packetState": "Ready for the next management exchange",
+          "services": []
+        },
+        {
+          "nodeId": "nas",
+          "title": "Manage UNAS Pro-8",
+          "detail": "The console is the management point for the UNAS Pro-8 storage device.",
+          "packetState": "Logical management exchange",
+          "services": [
+            "UniFi management"
+          ]
+        },
+        {
+          "nodeId": "unifi-console-vm",
+          "title": "Review managed devices",
+          "detail": "The console manages both UniFi gateways, the UniFi AP, the UNAS Pro-8 and the USW Pro Max 16.",
+          "packetState": "Five management relationships covered",
+          "services": []
+        }
+      ],
+      "linkIds": [
+        "unifi-manage-gateway-fiber",
+        "unifi-manage-gateway-fiber",
+        "unifi-manage-gateway-max",
+        "unifi-manage-gateway-max",
+        "unifi-manage-unifi-iot-ap",
+        "unifi-manage-unifi-iot-ap",
+        "unifi-manage-lan-switch",
+        "unifi-manage-lan-switch",
+        "unifi-manage-nas",
+        "unifi-manage-nas"
+      ],
+      "assumptions": [
+        "Each dashed management link represents a logical request and response with the console.",
+        "The walkthrough uses the management relationships supplied by the user. The VM host, VLANs, IP addressing and transport paths are unspecified."
+      ],
+      "outcome": "The walkthrough covered both gateways, the AP, the switch and UNAS from the Proxmox-hosted UniFi Console."
     }
   ]
 }

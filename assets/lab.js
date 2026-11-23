@@ -9,6 +9,9 @@ const viewport = document.querySelector("#lab-viewport");
 const layoutLink = document.querySelector("#lab-layout-link");
 const legend = document.querySelector("#map-legend");
 const legendToggle = document.querySelector("#legend-toggle");
+const managementLegend = document.querySelector("#management-legend");
+const selectedLegend = document.querySelector("#selected-legend");
+const inspectorTitle = document.querySelector("#lab-inspector-title");
 const map = document.querySelector("#lab-map");
 const originalView = map.getAttribute("viewBox");
 const routeLayer = document.querySelector("#selected-links");
@@ -31,7 +34,8 @@ const zoomStep = 1.35;
 
 let journey;
 let stages = [];
-let routeLinks = [];
+let routeLegs = [];
+let deviceSteps = new Map();
 let buttons = [];
 let index = 0;
 let timer;
@@ -147,9 +151,17 @@ function showStep(number, center = true) {
     device.toggleAttribute("data-current", active);
     if (active) device.setAttribute("aria-current", "step");
     else device.removeAttribute("aria-current");
+    const visits = deviceSteps.get(id);
+    if (visits) {
+      const visit = visits.find(step => step >= index) ?? visits.at(-1);
+      device.dataset.jump = visit;
+      device.setAttribute("aria-label", `Map step ${visit + 1} · ${stages[visit].querySelector(".stage-device").textContent}`);
+      device.querySelector(".map-step text").textContent = visit + 1;
+    }
   }
-  for (const [i, link] of routeLinks.entries()) {
-    link.dataset.reached = String(i < index);
+  const reached = new Set(routeLegs.slice(0, index).map(leg => leg.element));
+  for (const {element} of routeLegs) {
+    element.dataset.reached = String(reached.has(element));
   }
   previous.setAttribute("aria-disabled", String(index === 0));
   next.setAttribute("aria-disabled", String(index === stages.length - 1));
@@ -162,10 +174,10 @@ function showStep(number, center = true) {
 
 function showPacket() {
   packetLayer.replaceChildren();
-  const leg = routeLinks[index];
+  const leg = routeLegs[index];
   if (timer === undefined || reducedMotion.matches || !leg) return;
-  const points = leg.querySelector(".map-wire").getAttribute("points").split(" ");
-  if (leg.dataset.direction === "start") points.reverse();
+  const points = leg.element.querySelector(".map-wire").getAttribute("points").split(" ");
+  if (leg.direction === "start") points.reverse();
   const packet = document.createElementNS(svgNamespace, "circle");
   packet.setAttribute("r", "7");
   const motion = document.createElementNS(svgNamespace, "animateMotion");
@@ -245,18 +257,20 @@ function selectJourney(center = true) {
     panel.toggleAttribute("data-enhanced", panel === journey);
   }
   stages = [...journey.querySelectorAll("[data-stage]")];
-  const onRoute = new Map(stages.map((stage, i) => [stage.dataset.stage, i]));
+  deviceSteps = new Map();
+  for (const [i, stage] of stages.entries()) {
+    const id = stage.dataset.stage;
+    const visits = deviceSteps.get(id) ?? [];
+    visits.push(i);
+    deviceSteps.set(id, visits);
+  }
   for (const [id, device] of devices) {
-    const number = onRoute.get(id);
-    const included = number !== undefined;
+    const included = deviceSteps.has(id);
     device.toggleAttribute("data-on-route", included);
     if (included) {
-      device.dataset.jump = number;
       device.removeAttribute("aria-hidden");
       device.setAttribute("tabindex", "0");
       device.setAttribute("role", "button");
-      device.setAttribute("aria-label", `Map step ${number + 1} · ${stages[number].querySelector(".stage-device").textContent}`);
-      device.querySelector(".map-step text").textContent = number + 1;
     } else {
       delete device.dataset.jump;
       device.setAttribute("aria-hidden", "true");
@@ -265,15 +279,26 @@ function selectJourney(center = true) {
       device.removeAttribute("aria-label");
     }
   }
-  deviceLayer.append(...Array.from(onRoute.keys(), id => devices.get(id)));
+  deviceLayer.append(...Array.from(deviceSteps.keys(), id => devices.get(id)));
 
   routeLayer.replaceChildren();
   if (journey.dataset.overlay) copyLink(journey.dataset.overlay);
-  routeLinks = stages.slice(1).map((stage, i) => {
-    const link = links.get(stage.dataset.leg);
-    const direction = link.dataset.to === stage.dataset.stage ? "end" : "start";
-    return copyLink(stage.dataset.leg, direction);
+  const drawnLinks = new Map();
+  routeLegs = stages.slice(1).map(stage => {
+    const id = stage.dataset.leg;
+    const direction = links.get(id).dataset.to === stage.dataset.stage ? "end" : "start";
+    let element = drawnLinks.get(id);
+    if (!element) {
+      element = copyLink(id, direction);
+      drawnLinks.set(id, element);
+    } else if (element.dataset.direction !== direction) {
+      element.dataset.direction = "both";
+    }
+    return {element, direction};
   });
+  managementLegend.hidden = !routeLegs.some(({element}) => element.dataset.kind === "management");
+  selectedLegend.hidden = routeLegs.every(({element}) => element.dataset.kind === "management");
+  inspectorTitle.textContent = selectedLegend.hidden ? "Management walkthrough" : "Packet walkthrough";
 
   buttons = stages.map((stage, i) => {
     const button = document.createElement("button");
@@ -378,7 +403,7 @@ const requestedZoom = Number(settings.get("zoom"));
 zoom = Number.isFinite(requestedZoom) && requestedZoom > 0 ? requestedZoom : null;
 viewport.setAttribute("data-pan", "");
 legend.setAttribute("data-interactive", "");
-for (const id of ["lab-picker", "lab-visibility", "lab-controls", "step-status", "selected-legend", "lab-zoom", "stage-buttons"]) {
+for (const id of ["lab-picker", "lab-visibility", "lab-controls", "step-status", "lab-zoom", "stage-buttons"]) {
   document.getElementById(id).hidden = false;
 }
 selectJourney(false);
